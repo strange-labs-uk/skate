@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="Track your miniramp warmup trick progress"
+        />
+        <meta name="author" content="Strange Labs" />
+        <title>Miniramp Warmup Checklist</title>
+
+        <meta property="og:title" content="Miniramp Warmup Checklist" />
+        <meta
+            property="og:description"
+            content="Track your miniramp warmup trick progress"
+        />
+        <meta property="og:url" content="https://skate.strangelabs.io/" />
+        <meta property="og:site_name" content="Skate" />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Miniramp Warmup Checklist" />
+        <meta
+            name="twitter:description"
+            content="Track your miniramp warmup trick progress"
+        />
+
+        <link rel="canonical" href="https://skate.strangelabs.io/" />
+
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="js/skate.js" defer></script>
+    </head>
+    <body>
+        <main class="site-main">
+            <div class="container">
+                <div class="skate-page">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="text-center" id="checklistTitle"></h1>
+                            <p
+                                class="text-center"
+                                id="checklistDescription"
+                            ></p>
+
+                            <div class="skate-checklist">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <div class="progress-stats">
+                                            <h4>
+                                                Progress:
+                                                <span id="progressCount"
+                                                    >0</span
+                                                >
+                                                /
+                                                <span id="totalCount">0</span>
+                                                tricks completed
+                                            </h4>
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar"
+                                                    id="progressBar"
+                                                    role="progressbar"
+                                                    style="width: 0%"
+                                                ></div>
+                                            </div>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            id="resetProgress"
+                                            class="btn btn-eraser"
+                                        >
+                                            Reset All Progress
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="checklistContainer"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>
+                    &copy; 2025 Strange Labs Computers Ltd. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

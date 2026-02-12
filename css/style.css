@@ -1,0 +1,426 @@
+/* ==========================================================================
+   Chalkboard Theme
+   ========================================================================== */
+
+/* Base */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: "Courier New", Courier, monospace;
+    color: #e8e0d0;
+    line-height: 1.5;
+    background-color: #343d43;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Chalkboard texture overlay */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.03) 2px,
+            rgba(255, 255, 255, 0.03) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 3px,
+            rgba(255, 255, 255, 0.02) 3px,
+            rgba(255, 255, 255, 0.02) 6px
+        );
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #f0ece4;
+}
+
+h1 {
+    font-size: 2.2rem;
+    letter-spacing: 0.02em;
+}
+h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+h4 {
+    font-size: 1.1rem;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Layout */
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.site-main {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 2rem;
+}
+
+.site-footer {
+    padding: 2rem 0;
+    font-size: 0.8rem;
+    color: rgba(232, 224, 208, 0.25);
+}
+
+/* Grid Utilities */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.75rem;
+}
+
+.row > * {
+    padding: 0 0.75rem;
+}
+.col-12 {
+    width: 100%;
+}
+.col-md-6 {
+    width: 100%;
+}
+.col-lg-12 {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .col-md-6 {
+        width: 50%;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    border: 2px dashed rgba(232, 224, 208, 0.3);
+    border-radius: 4px;
+    background: transparent;
+    color: rgba(232, 224, 208, 0.6);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    border-color: rgba(232, 224, 208, 0.6);
+    color: #e8e0d0;
+}
+
+.btn-eraser {
+    border-color: rgba(220, 100, 100, 0.4);
+    color: rgba(220, 100, 100, 0.7);
+}
+
+.btn-eraser:hover {
+    border-color: rgba(220, 100, 100, 0.7);
+    background: rgba(220, 100, 100, 0.08);
+    color: #dc6464;
+}
+
+/* Skate Checklist */
+.skate-checklist {
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    border-radius: 4px;
+    border: 1px solid rgba(232, 224, 208, 0.08);
+}
+
+#checklistContainer {
+    margin-top: 2.5rem;
+}
+
+.trick-category {
+    margin-bottom: 30px;
+}
+
+/* Collapsible category headings */
+.category-toggle {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+}
+
+.category-toggle:hover {
+    color: #f4d35e;
+}
+
+.toggle-icon {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 7px solid #e8e0d0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    margin-right: 10px;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.category-toggle[aria-expanded="true"] .toggle-icon {
+    transform: rotate(90deg);
+}
+
+.category-toggle:hover .toggle-icon {
+    border-left-color: #f4d35e;
+}
+
+.category-tricks {
+    overflow: hidden;
+    max-height: 2000px;
+    transition:
+        max-height 0.35s ease,
+        opacity 0.25s ease;
+    opacity: 1;
+}
+
+.category-tricks.collapsed {
+    max-height: 0;
+    opacity: 0;
+}
+
+.trick-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 3px;
+    transition:
+        background-color 0.25s,
+        border-color 0.25s;
+    background-color: rgba(232, 224, 208, 0.04);
+    border: 1px solid rgba(232, 224, 208, 0.1);
+    border-left: 3px solid rgba(232, 224, 208, 0.1);
+    min-height: 48px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.trick-item:hover {
+    background-color: rgba(232, 224, 208, 0.08);
+    border-color: rgba(232, 224, 208, 0.2);
+    border-left-color: rgba(232, 224, 208, 0.2);
+}
+
+.trick-item:active {
+    background-color: rgba(232, 224, 208, 0.1);
+}
+
+.trick-item.completed {
+    background-color: rgba(244, 211, 94, 0.06);
+    border-color: rgba(244, 211, 94, 0.15);
+    border-left-color: rgba(244, 211, 94, 0.4);
+}
+
+.trick-item.completed .trick-name {
+    text-decoration: line-through;
+    opacity: 0.45;
+}
+
+/* Custom Checkbox — chalk style */
+.trick-checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.checkmark {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(232, 224, 208, 0.3);
+    border-radius: 3px;
+    margin-right: 14px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.checkmark::after {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid #f4d35e;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg) scale(0);
+    transition: transform 0.2s ease;
+}
+
+.trick-checkbox:checked ~ .checkmark {
+    border-color: rgba(244, 211, 94, 0.5);
+    background-color: rgba(244, 211, 94, 0.08);
+}
+
+.trick-checkbox:checked ~ .checkmark::after {
+    transform: rotate(45deg) scale(1);
+}
+
+.trick-name {
+    font-size: 1.05rem;
+    transition: opacity 0.3s;
+}
+
+/* Progress */
+.progress-stats {
+    margin: 30px 0 20px;
+    text-align: center;
+}
+
+.progress {
+    height: 22px;
+    margin-top: 15px;
+    background-color: rgba(232, 224, 208, 0.08);
+    border-radius: 11px;
+    overflow: hidden;
+    border: 1px solid rgba(232, 224, 208, 0.12);
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #f4d35e, #e8c547);
+    transition: width 0.5s ease;
+    height: 100%;
+    border-radius: 11px;
+    box-shadow: 0 0 8px rgba(244, 211, 94, 0.2);
+}
+
+/* Explosion */
+.explosion {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1000;
+    will-change: transform, opacity;
+}
+
+.explosion-particle {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid rgba(244, 211, 94, 0.7);
+    outline-offset: 2px;
+}
+
+.trick-checkbox:focus-visible ~ .checkmark {
+    outline: 2px solid rgba(244, 211, 94, 0.7);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.7rem;
+    }
+    h3 {
+        font-size: 1.15rem;
+    }
+
+    .container {
+        padding: 0 1.5rem;
+    }
+    .site-main {
+        padding-top: 1.5rem;
+    }
+
+    .skate-checklist {
+        padding: 20px 15px;
+    }
+
+    .progress-stats {
+        margin: 20px 0 15px;
+    }
+    .progress {
+        height: 18px;
+    }
+
+    #checklistContainer {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .skate-checklist {
+        padding: 15px 10px;
+    }
+
+    .trick-item {
+        padding: 10px 12px;
+    }
+}
