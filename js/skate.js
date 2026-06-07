@@ -77,7 +77,51 @@ var checklistConfig = {
     },
     {
       name: "Other Stalls",
-      tricks: [{ id: "tail-stall", name: "Tail Stall" }],
+      tricks: [
+        { id: "tail-stall", name: "Tail Stall" },
+        { id: "nose-stall", name: "Nose Stall" },
+      ],
+    },
+    {
+      name: "Other Tricks and Combos",
+      tricks: [
+        { id: "frontside-180", name: "Frontside 180" },
+        { id: "backside-180", name: "Backside 180" },
+        { id: "halfcab-rock-body-varial", name: "Halfcab Rock Body Varial" },
+        { id: "tail-stall-pull-rock", name: "Tail Stall pull to Rock" },
+        {
+          id: "fakie-front-smith-rock",
+          name: "Fakie Front Smith to Rock Fakie",
+        },
+        {
+          id: "fakie-front-smith-rock-roll",
+          name: "Fakie Front Smith to Rock and Roll",
+        },
+        {
+          id: "fakie-front-smith-front-rock",
+          name: "Fakie Front Smith to Front Rock",
+        },
+        {
+          id: "fakie-back-smith-rock",
+          name: "Fakie Back Smith to Rock Fakie",
+        },
+        {
+          id: "fakie-back-smith-rock-roll",
+          name: "Fakie Back Smith to Rock and Roll",
+        },
+        {
+          id: "fakie-back-smith-front-rock",
+          name: "Fakie Back Smith to Front Rock",
+        },
+        {
+          id: "fakie-front-smith-front-feeble",
+          name: "Fakie Front Smith to Front Feeble",
+        },
+        {
+          id: "fakie-back-smith-back-feeble",
+          name: "Fakie Back Smith to Back Feeble",
+        },
+      ],
     },
     {
       name: "Grinds",
